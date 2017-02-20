@@ -66,9 +66,10 @@ export default class PostList extends Component {
                     {
                         data.map((item, index) => {
                             return (
-                                <Link to={"/topic/"+item.id}>
+                                <Link to={"/topic/"+item.id}
+                                      key={index}
+                                >
                                     <TopicItem
-                                        key={index}
                                         {...item}
                                     />
                                 </Link>
