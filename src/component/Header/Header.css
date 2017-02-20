@@ -1,0 +1,77 @@
+@font-face {
+    font-family: iconfont;
+    src: url(//at.alicdn.com/t/font_1449145493_7316074.eot);
+    src: url(//at.alicdn.com/t/font_1449145493_7316074.eot?#iefix) format('embedded-opentype'), url(//at.alicdn.com/t/font_1449145493_7316074.woff) format('woff'), url(//at.alicdn.com/t/font_1449145493_7316074.ttf) format('truetype'), url(//at.alicdn.com/t/font_1449145493_7316074.svg#iconfont) format('svg')
+}
+
+.header{
+    display: block;
+    width: 100%;
+    height: 44px;
+    background-color: rgba(255, 255, 255, 0.95);
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    z-index: 6;
+    border-bottom: 1px solid #e8e8e8;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.25)
+}
+
+.header .nav{
+    width: 49px;
+    height: 44px;
+    position: absolute;
+    background: url('../../../static/image/nav_icon.png') no-repeat center center;
+    background-size: 19px 16px;
+    margin: 0;
+    z-index: 1;
+    top: 0;
+    left: 0;
+}
+
+.header .add-icon{
+    color: #42b983;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    z-index: 10;
+    padding: 5px 15px;
+    border-radius: 5px;
+}
+
+.iconfont{
+    font-family: "iconfont" !important;
+    font-size: 16px;
+    font-style: normal;
+}
+
+
+.header span{
+    display: block;
+    height: 100%;
+    width: 100%;
+    line-height: 44px;
+    font-size: 16px;
+    z-index: 0;
+    position: relative;
+    text-align: center;
+}
+
+
+.nav-list {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: -200px;
+    width: 200px;
+    background-color: #fff;
+    color: #313131;
+    -webkit-transition: all .3s ease;
+    transition: all .3s ease;
+    z-index: 99;
+}
+
+.nav-list.show {
+    -webkit-transform: translateX(200px);
+    transform: translateX(200px);
+}
