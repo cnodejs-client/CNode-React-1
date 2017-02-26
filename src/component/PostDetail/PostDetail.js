@@ -1,6 +1,9 @@
 import React, {Component, PropTypes}from 'react'
 import {getRelativeTime} from '../../utils/dateUtil'
-import './PostDetail.css'
+import Comment from './Comment'
+import {TABNAMECONTENT} from '../../constant/Contant'
+import {markdown} from 'markdown';
+import './PostDetail.less'
 
 export default class PostDetail extends Component {
 
@@ -8,7 +11,7 @@ export default class PostDetail extends Component {
         super(props)
     }
 
-    componentDidMount(){
+    componentDidMount() {
         const {fetchTopicData} = this.props;
         const {topicId} = this.props.params;
         fetchTopicData(topicId);
@@ -16,7 +19,7 @@ export default class PostDetail extends Component {
 
     render() {
         const {isFetching} = this.props;
-        if(isFetching || !this.props.data){
+        if (isFetching || !this.props.data) {
             return (
                 <div className="post-detail">
                     Loading......
@@ -24,38 +27,42 @@ export default class PostDetail extends Component {
             );
         }
 
-        const {title,author,create_at,visit_count} = this.props.data;
+        const {
+            title, author, create_at, visit_count, good, top, tab,
+            content,replies
+        } = this.props.data;
+
         return (
             <div className="post-detail">
-                <h2 className="post-detail-title">{title}</h2>
-                <div className="post-detail-profile">
+                <h2 className="title">{title}</h2>
+                <div className="profile">
                     <img className="avatar" src={author.avatar_url}/>
                     <div className="author">
                         <span>{author.loginname}</span>
                         <span>发布于:{getRelativeTime(create_at)}</span>
                     </div>
                     <div className="flow">
-                        <span>精华</span>
+                        <span className="tag">
+                            {good ? TABNAMECONTENT.good : top ? TABNAMECONTENT.top :TABNAMECONTENT[tab]}
+                        </span>
                         <span>{visit_count}次阅读</span>
                     </div>
                 </div>
-
-                {/*<div className="content">*/}
-                    {/*{}*/}
-                {/*</div>*/}
-                {/*<div className="comment">*/}
-                    {/*<div className="comment-profile">*/}
-                        {/*<img className="avatar" src="https://avatars.githubusercontent.com/u/4624?v=3&s=120"/>*/}
-                        {/*<div className="author">*/}
-                            {/*<span>{}</span>*/}
-                            {/*<span>{}</span>*/}
-                        {/*</div>*/}
-                    {/*</div>*/}
-                    {/*<div className="comment-content">*/}
-                        {/*<p>{}</p>*/}
-                    {/*</div>*/}
-                {/*</div>*/}
-
+                <div className="postContent">
+                    <p dangerouslySetInnerHTML={
+                        {
+                            __html:markdown.toHTML(content)
+                        }
+                    }/>
+                </div>
+                {
+                    replies.map((reply,index)=>(
+                        <Comment
+                            key={index}
+                            {...reply}
+                        />
+                    ))
+                }
             </div>
         );
     }

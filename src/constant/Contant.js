@@ -20,5 +20,6 @@ export const TABNAMECONTENT = {
     ask: '问答',
     job: '招聘',
     good: '精华',
-    all: '全部'
+    all: '全部',
+    top: '置顶'
 };

@@ -28,6 +28,10 @@ var config = {
                 loader: 'style!css' // Run both loaders
             },
             {
+                test: /\.less$/,
+                loader: 'style!css!less'
+            },
+            {
                 test: /\.(png|jpg)$/,
                 loader: 'url-loader?limit=8192&name=image/[hash:8].[name].[ext]'
             }

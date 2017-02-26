@@ -1,7 +1,6 @@
 import React, {Component} from 'react'
 import {Link} from 'react-router'
-import {TABNAMECONTENT}from '../../constant/Contant'
-import './Header.css'
+import './Header.less'
 
 class Header extends Component {
     constructor(props) {
@@ -10,16 +9,14 @@ class Header extends Component {
 
 
     render() {
-        const {tag} = this.props;
-        const content = TABNAMECONTENT[tag];
         return (
             <div>
                 <header className="header">
-                    <div>
-                        <div className="nav"></div>
-                        <span>{content}</span>
-                        <i className="add-icon iconfont">&#xe60f;</i>
-                    </div>
+                    <span><Link to="/all">全部</Link></span>
+                    <span><Link to="/share">分享</Link></span>
+                    <span><Link to="/good">精华</Link></span>
+                    <span><Link to="/ask">问答</Link></span>
+                    <span><Link to="/job">招聘</Link></span>
                 </header>
             </div>
         )

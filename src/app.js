@@ -12,7 +12,7 @@ render(
     <Provider store={store}>
         <Router history={hashHistory}>
             <Router path="/" component={App}>
-                <React path="/topic/:topicId" component={postDetailContainer} />
+                <Route path="/topic/:topicId" component={postDetailContainer} />
                 <Route path="/:tag" component={postContainer} />
                 <IndexRoute component={postContainer} />
             </Router>

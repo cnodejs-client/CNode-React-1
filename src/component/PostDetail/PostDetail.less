@@ -1,63 +1,69 @@
 .post-detail {
-    padding-top: 44px;
-}
-
-.post-detail .title {
+  padding-top: 44px;
+  .title {
     color: #2c3e50;
     background-color: #f0f0f0;
     border-radius: 5px;
     font-size: 18px;
     font-weight: bolder;
     margin: 10px 20px;
-}
+  }
 
-.post-detail .profile {
+  .profile {
     height: 44px;
     margin: 0px 20px;
     display: flex;
     justify-content: space-around;
     color: #34495e;
     font-size: 12px;
-}
+  }
 
-.post-detail .avatar {
+  .avatar {
     flex-basis: 40px;
     height: 40px;
     width: 40px;
     margin-right: 10px;
     border-radius: 5px;
-}
+  }
 
-.post-detail .author {
+  .author {
     flex: 1;
     display: flex;
     flex-direction: column;
-}
+    span {
+      flex: 1;
+    }
+  }
 
-.post-detail .author span {
-    flex: 1;
-}
+  .postContent{
+    display: flex;
+    margin: 0px 20px;
+    & p{
+      flex: 1;
+      overflow-x: hidden;
+    }
+  }
 
-.post-detail .flow {
+  .flow {
     display: flex;
     flex-basis: 100px;
     flex-direction: column;
     align-items: flex-end;
     text-align: right;
-}
 
-.post-detail .flow span{
-    flex: 1;
-}
+    span {
+      flex: 1;
+    }
 
-.flow .tag{
-    width: 60px;
-    background: #E67E22;
-    color: #ffffff;
-    text-align: center;
-    padding: 5px 6px;
-    font-size: 10px;
-    font-weight: 400;
-    border-radius: 4px;
+    .tag {
+      width: 60px;
+      background: #E67E22;
+      color: #ffffff;
+      text-align: center;
+      padding: 5px 6px;
+      font-size: 10px;
+      font-weight: 400;
+      border-radius: 4px;
+    }
+  }
 }
-

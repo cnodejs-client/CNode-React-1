@@ -55,14 +55,6 @@ export default class PostList extends Component {
         } else {
             return (
                 <div className="postlist">
-                    <ul role="nav">
-                        <li><Link to="/share">Share</Link></li>
-                        <li><Link to="/job">Job</Link></li>
-                        <li><Link to="/good">Good</Link></li>
-                        <li><Link to="/ask">Ask</Link></li>
-                        <li><Link to="/all">All</Link></li>
-                    </ul>
-
                     {
                         data.map((item, index) => {
                             return (

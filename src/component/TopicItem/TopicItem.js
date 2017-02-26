@@ -1,7 +1,7 @@
 import React, {Component, PropTypes} from 'react'
 import {TABCONTANT} from '../../constant/Contant'
 import {getRelativeTime} from '../../utils/dateUtil'
-import './TopicItem.css'
+import './TopicItem.less'
 
 export default class TopicItem extends Component {
 
@@ -24,13 +24,15 @@ export default class TopicItem extends Component {
     }
 
     render() {
-        const {title, tab, author,reply_count,visit_count,create_at,last_reply_at} = this.props;
+        const {
+            title, tab, author, reply_count, visit_count, create_at, last_reply_at
+        } = this.props;
         const {onClick} = this.props;
         return (
             <div className="topicItem">
                 <h3 className={TABCONTANT[tab]}>{title}</h3>
                 <div className="content">
-                    <img className="avatar" src={author.avatar_url} />
+                    <img className="avatar" src={author.avatar_url}/>
                     <div className="info">
                         <div className="detail">
                             <span>{author.loginname}</span>

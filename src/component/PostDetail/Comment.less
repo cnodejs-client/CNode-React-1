@@ -1,0 +1,38 @@
+.comment{
+  border-bottom: 1px solid #d5dbdb;
+  margin-top: 10px;
+  .profile{
+    display: flex;
+    .comment-author{
+      flex-basis: 45px;
+      margin-right: 10px;
+      width: 45px;
+      height: 45px;
+    }
+    .message{
+      flex-grow: 1;
+      span{
+        display: block;
+        &:first-child{
+          height: 20px;
+        }
+        &:last-child{
+          height: 25px;
+        }
+      }
+
+
+    }
+    .operator{
+      flex-basis: 60px;
+    }
+  }
+  .comment-content{
+    display: flex;
+    margin: 0px 20px;
+    line-height: 1.3;
+    & p{
+      flex: 1;
+    }
+  }
+}
