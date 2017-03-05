@@ -1,4 +1,5 @@
 import React, {Component, PropTypes} from 'react'
+import Avatar from '../Avatar'
 import {TABCONTANT} from '../../constant/Contant'
 import {getRelativeTime} from '../../utils/dateUtil'
 import './TopicItem.less'
@@ -32,7 +33,11 @@ export default class TopicItem extends Component {
             <div className="topicItem">
                 <h3 className={TABCONTANT[tab]}>{title}</h3>
                 <div className="content">
-                    <img className="avatar" src={author.avatar_url}/>
+                    <Avatar
+                        className = "avatar"
+                        url = {author.avatar_url}
+                        userName = {author.loginname}
+                    />
                     <div className="info">
                         <div className="detail">
                             <span>{author.loginname}</span>
@@ -46,6 +51,5 @@ export default class TopicItem extends Component {
                 </div>
             </div>
         );
-
     }
 }

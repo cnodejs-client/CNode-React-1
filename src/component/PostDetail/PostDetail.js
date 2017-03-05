@@ -1,6 +1,7 @@
 import React, {Component, PropTypes}from 'react'
 import {getRelativeTime} from '../../utils/dateUtil'
 import Comment from './Comment'
+import Avatar from '../Avatar'
 import {TABNAMECONTENT} from '../../constant/Contant'
 import {markdown} from 'markdown';
 import 'github-markdown-css'
@@ -37,7 +38,11 @@ export default class PostDetail extends Component {
             <div className="post-detail">
                 <h2 className="title">{title}</h2>
                 <div className="profile">
-                    <img className="avatar" src={author.avatar_url}/>
+                    <Avatar
+                        className="avatar"
+                        url={author.avatar_url}
+                        userName={author.loginname}
+                    />
                     <div className="author">
                         <span>{author.loginname}</span>
                         <span>发布于:{getRelativeTime(create_at)}</span>

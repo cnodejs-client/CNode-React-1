@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import {getRelativeTime} from '../../utils/dateUtil'
-import {markdown} from 'markdown';
+import {markdown} from 'markdown'
+import Avatar from '../Avatar'
 import 'github-markdown-css'
 import './Comment.less'
 
@@ -11,12 +12,14 @@ export default class Comment extends Component {
 
     render() {
         const {content, author, create_at} = this.props;
-        console.log('markdown.toHTML(content)', markdown.toHTML(content));
-
         return (
             <div className="comment">
                 <div className="profile">
-                    <img className="comment-author" src={author.avatar_url}/>
+                    <Avatar
+                        className="comment-author"
+                        url = {author.avatar_url}
+                        userName = {author.loginname}
+                    />
                     <div className="message">
                         <span className="name">{author.loginname}</span>
                         <span className="time">发布于:{getRelativeTime(create_at)}</span>
@@ -36,7 +39,5 @@ export default class Comment extends Component {
                 </div>
             </div>
         );
-
-
     }
 }
