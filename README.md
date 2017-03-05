@@ -1,4 +1,4 @@
-# React-Advanced-Guides-CN
+# CNode-React
 
 作者: MrErHu(请叫我王磊同学)
 
