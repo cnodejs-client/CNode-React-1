@@ -1,6 +1,6 @@
 import {connect} from 'react-redux'
 import PostList from '../component/PostList'
-import {fetchData} from '../action/action'
+import {fetchData} from '../action'
 
 
 const mapStateToProps = (state, ownProps) => {

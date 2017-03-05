@@ -1,6 +1,6 @@
 import PostDetail from '../component/PostDetail'
 import {connect} from 'react-redux'
-import {fetchTopicData} from '../action/action'
+import {fetchTopicData} from '../action'
 
 
 const mapStateToProps = (state,ownProps)=>{

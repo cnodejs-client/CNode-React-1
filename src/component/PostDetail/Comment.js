@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import {getRelativeTime} from '../../utils/dateUtil'
 import {markdown} from 'markdown';
+import 'github-markdown-css'
 import './Comment.less'
 
 export default class Comment extends Component {
@@ -9,7 +10,8 @@ export default class Comment extends Component {
     }
 
     render() {
-        const {content,author,create_at} = this.props;
+        const {content, author, create_at} = this.props;
+        console.log('markdown.toHTML(content)', markdown.toHTML(content));
 
         return (
             <div className="comment">
@@ -22,13 +24,15 @@ export default class Comment extends Component {
                     <div className="operator">
                     </div>
                 </div>
-                <div className="comment-content"
-                     dangerouslySetInnerHTML={
-                         {
-                             __html: markdown.toHTML(content)
+                <div className="comment-content">
+                    <div className="markdown-body"
+                         dangerouslySetInnerHTML={
+                             {
+                                 __html: markdown.toHTML(content)
+                             }
                          }
-                     }
-                >
+                    >
+                    </div>
                 </div>
             </div>
         );

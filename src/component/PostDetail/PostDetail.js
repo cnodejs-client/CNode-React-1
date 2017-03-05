@@ -3,6 +3,7 @@ import {getRelativeTime} from '../../utils/dateUtil'
 import Comment from './Comment'
 import {TABNAMECONTENT} from '../../constant/Contant'
 import {markdown} from 'markdown';
+import 'github-markdown-css'
 import './PostDetail.less'
 
 export default class PostDetail extends Component {
@@ -49,11 +50,13 @@ export default class PostDetail extends Component {
                     </div>
                 </div>
                 <div className="postContent">
-                    <p dangerouslySetInnerHTML={
+                    <div className="markdown-body"
+                        dangerouslySetInnerHTML={
                         {
                             __html:markdown.toHTML(content)
                         }
-                    }/>
+                    }>
+                    </div>
                 </div>
                 {
                     replies.map((reply,index)=>(
