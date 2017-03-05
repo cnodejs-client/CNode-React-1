@@ -1,0 +1,33 @@
+.userDetail{
+  & .userAvatar{
+    display: flex;
+    height: 180px;
+    flex-direction: column;
+    border-bottom: 1px solid #d5dbdb;
+    justify-content: flex-end;
+    align-items: center;
+
+    & .avatar{
+      width: 60px;
+      height: 60px;
+      border-radius: 30px;
+    }
+
+    & .userName{
+      font-weight: bold;
+      font-size: 20px;
+    }
+
+    & .detail{
+      display: flex;
+      width: 100%;
+      margin-bottom: 10px;
+
+      & span{
+        flex: 1;
+        text-align: center;
+        font-size: smaller;
+      }
+    }
+  }
+}

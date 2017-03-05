@@ -1,4 +1,6 @@
 import React, {Component} from 'react'
+import {getRelativeTime} from '../../utils/dateUtil'
+import UserTopic from './UserTopic'
 import './UserDetail.less'
 
 class UserDetail extends Component {
@@ -21,10 +23,22 @@ class UserDetail extends Component {
                 </div>
             );
         }
+        const {avatar_url,loginname,score,create_at} = this.props.data;
         return (
             <div className="userDetail">
-
+                <div className="userAvatar">
+                    <img className="avatar" src={avatar_url}/>
+                    <span className="userName">{loginname}</span>
+                    <div className="detail">
+                        <span>积分:{score}</span>
+                        <span>注册于:{getRelativeTime(create_at)}</span>
+                    </div>
+                </div>
+                <UserTopic
+                    data={this.props.data}
+                />
             </div>
+
         );
     }
 }

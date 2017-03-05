@@ -1,0 +1,31 @@
+.userTopic{
+  & .userTopicTag{
+    display: flex;
+    width: 100%;
+    border-bottom: 1px solid #d5dbdb;
+    & span{
+      flex: 1;
+      height: 40px;
+      line-height: 40px;
+      text-align: center;
+    }
+    & span:first-child {
+      border-right: 1px solid #d5dbdb;
+    }
+  }
+
+  & .userTopicContent{
+
+    & .userTopicItem{
+      height: 50px;
+      line-height: 50px;
+      border-bottom: 1px solid #d5dbdb;
+      overflow: hidden;
+      white-space:nowrap;
+      text-overflow: ellipsis;
+      padding: 10px;
+    }
+
+  }
+
+}
