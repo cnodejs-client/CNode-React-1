@@ -1,9 +1,10 @@
-import React,{Component} from 'react'
+import React, {Component} from 'react'
+import {Link}from 'react-router'
 import './UserTopic.less'
 
-export default class UserTopic extends Component{
+export default class UserTopic extends Component {
 
-    constructor(props){
+    constructor(props) {
         super(props);
         this.state = {
             tag: 'recent_replies'
@@ -11,33 +12,38 @@ export default class UserTopic extends Component{
     }
 
 
-
-    render(){
+    render() {
         const {data} = this.props;
         const {tag} = this.state
-        return(
+        return (
             <div className="userTopic">
                 <div className="userTopicTag">
                     <span
-                        onClick={()=>{this.setState({tag: "recent_replies"})}}
+                        onClick={() => {
+                            this.setState({tag: "recent_replies"})
+                        }}
                     >{'最近回复'}
                     </span>
                     <span
-                        onClick={()=>{this.setState({tag: "recent_topics"})}}
+                        onClick={() => {
+                            this.setState({tag: "recent_topics"})
+                        }}
                     >{'最近发布'}
                     </span>
                 </div>
                 <div className="userTopicContent">
                     {
-                        !data[tag] ? null:
-                            data[tag].map((item,index)=>{
-                                return(
-                                    <div
+                        !data[tag] ? null :
+                            data[tag].map((item, index) => {
+                                return (
+                                    <Link
+                                        to={`/topic/${item.id}`}
                                         key={index}
-                                        className="userTopicItem"
                                     >
-                                        {item.title}
-                                    </div>
+                                        <div className="userTopicItem">
+                                            {item.title}
+                                        </div>
+                                    </Link>
                                 );
 
                             })

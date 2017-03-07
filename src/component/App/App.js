@@ -1,5 +1,5 @@
 import postContainer from '../../container/postContainer'
-import Header from '../../container/headerContainer'
+import Navigator from '../../container/navigatorContainer'
 import React,{Component} from 'react'
 import './App.css'
 
@@ -12,7 +12,7 @@ class App extends Component{
     render(){
         return(
             <div>
-                <Header/>
+                <Navigator/>
                 {this.props.children}
             </div>
         );

@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import {getRelativeTime} from '../../utils/dateUtil'
 import UserTopic from './UserTopic'
+import UserHeader from './UserHeader'
 import './UserDetail.less'
 
 class UserDetail extends Component {
@@ -26,6 +27,9 @@ class UserDetail extends Component {
         const {avatar_url,loginname,score,create_at} = this.props.data;
         return (
             <div className="userDetail">
+                <UserHeader
+                    title={loginname}
+                />
                 <div className="userAvatar">
                     <img className="avatar" src={avatar_url}/>
                     <span className="userName">{loginname}</span>
