@@ -16,22 +16,20 @@ class Navigator extends Component {
         const {activeTab} = this.props;
         console.log('connect',activeTab)
         return (
-            <MenuBar
-                position="top"
-            >
+            <MenuBar position="top">
                 <div className="Navigator">
                     {
-                        ['all', 'share', 'good', 'ask', 'job'].map((value) => {
+                        ['all', 'share', 'good', 'ask', 'job'].map((value,index) => {
                             if (value === activeTab) {
                                 return (
-                                    <span className="active">
+                                    <span className="active" key={index}>
                                      <Link to={"/" + value}>{TABNAMECONTENT[value]}</Link>
                                     </span>
                                 );
                             }
 
                             return (
-                                <span>
+                                <span key={index}>
                                      <Link to={"/" + value}>{TABNAMECONTENT[value]}</Link>
                                 </span>
                             );

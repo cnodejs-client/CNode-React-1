@@ -1,32 +1,37 @@
-.userTopic{
-  & .userTopicTag{
+.userTopic {
+  & .userTopicTag {
     display: flex;
     width: 100%;
     border-bottom: 1px solid #d5dbdb;
-    & span{
+    & span {
       flex: 1;
       height: 40px;
       line-height: 40px;
       text-align: center;
+      background: #eee;
+      border-bottom: 3px solid #eee;
     }
     & span:first-child {
       border-right: 1px solid #d5dbdb;
     }
+    & .active {
+      border-bottom: 3px solid #80bd01
+    }
   }
 
-  & .userTopicContent{
+  & .userTopicContent {
 
-    & .userTopicItem{
+    & .userTopicItem {
       height: 50px;
       line-height: 50px;
       border-bottom: 1px solid #d5dbdb;
       overflow: hidden;
-      white-space:nowrap;
+      white-space: nowrap;
       text-overflow: ellipsis;
       padding: 10px;
     }
 
-    & a{
+    & a {
       text-decoration: none;
       color: #000
     }

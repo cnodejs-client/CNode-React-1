@@ -21,8 +21,18 @@ class Footer extends Component {
         return (
             <MenuBar position="bottom">
                 <div className="Footer">
-                    <span><Link>个人主页</Link></span>
-                    <span><Link>消息</Link></span>
+                    <span>
+                        <Link to={"/#"}>首页</Link>
+                    </span>
+                    <span>
+                        <Link>发表</Link>
+                    </span>
+                    <span>
+                        <Link>消息</Link>
+                    </span>
+                    <span>
+                        <Link>我的</Link>
+                    </span>
                 </div>
             </MenuBar>
         );

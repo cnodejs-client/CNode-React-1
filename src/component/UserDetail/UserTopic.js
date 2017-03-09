@@ -19,12 +19,15 @@ export default class UserTopic extends Component {
             <div className="userTopic">
                 <div className="userTopicTag">
                     <span
+                        className={tag === 'recent_replies' ? 'active' : null}
                         onClick={() => {
                             this.setState({tag: "recent_replies"})
                         }}
-                    >{'最近回复'}
+                    >
+                        {'最近回复'}
                     </span>
                     <span
+                        className={tag === 'recent_topics' ? 'active' : null}
                         onClick={() => {
                             this.setState({tag: "recent_topics"})
                         }}
