@@ -4,7 +4,7 @@ import Navigator from '../component/Navigator'
 
 const mapStateToProps = (state, ownProps) => {
     return {
-        tag: state.selectTab
+        activeTab: state.selectTab
     }
 }
 

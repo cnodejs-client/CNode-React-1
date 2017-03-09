@@ -1,5 +1,6 @@
 import postContainer from '../../container/postContainer'
 import Navigator from '../../container/navigatorContainer'
+import Footer from '../../component/Footer'
 import React,{Component} from 'react'
 import './App.css'
 
@@ -14,6 +15,7 @@ class App extends Component{
             <div>
                 <Navigator/>
                 {this.props.children}
+                <Footer />
             </div>
         );
     }
