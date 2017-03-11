@@ -23,7 +23,7 @@ class Footer extends Component {
                         </Link>
                     </span>
                     <span>
-                        <Link to={!isLogin ? '/login' : '/#' }>
+                        <Link to={!isLogin ? '/login' : '/message' }>
                             {"消息"}
                         </Link>
                     </span>

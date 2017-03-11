@@ -1,4 +1,4 @@
-import {POST_ACCESS_TOKEN,LOGIN_ERROR,LOGIN_SUCCESS} from '../action/LoginAction'
+import {POST_ACCESS_TOKEN,LOGIN_ERROR,LOGIN_SUCCESS} from '../action'
 
 const initialLogin = {
     isLogin: false,
