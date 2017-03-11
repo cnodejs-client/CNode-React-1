@@ -3,6 +3,7 @@ import {getRelativeTime} from '../../utils/dateUtil'
 import Comment from './Comment'
 import Avatar from '../Avatar'
 import {TABNAMECONTENT} from '../../constant/Contant'
+import ContentHeader from '../../component/ContentHeader'
 import {markdown} from 'markdown';
 import 'github-markdown-css'
 import './PostDetail.less'
@@ -24,6 +25,9 @@ export default class PostDetail extends Component {
         if (isFetching || !this.props.data) {
             return (
                 <div className="post-detail">
+                    <ContentHeader
+                        title={'详情'}
+                    />
                     Loading......
                 </div>
             );
@@ -36,6 +40,9 @@ export default class PostDetail extends Component {
 
         return (
             <div className="post-detail">
+                <ContentHeader
+                    title={'详情'}
+                />
                 <h2 className="title">{title}</h2>
                 <div className="profile">
                     <Avatar

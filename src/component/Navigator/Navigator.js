@@ -14,7 +14,6 @@ class Navigator extends Component {
 
     render() {
         const {activeTab} = this.props;
-        console.log('connect',activeTab)
         return (
             <MenuBar position="top">
                 <div className="Navigator">

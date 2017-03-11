@@ -1,4 +1,3 @@
-import {combineReducers}from 'redux'
 import {REQUEST_TOPIC, RECEIVE_TOPIC} from '../action'
 
 var initialTopic = {

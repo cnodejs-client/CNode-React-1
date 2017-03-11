@@ -23,3 +23,6 @@ export const TABNAMECONTENT = {
     all: '全部',
     top: '置顶'
 };
+
+
+export const URL_PREFIX = "https://cnodejs.org/api/v1";

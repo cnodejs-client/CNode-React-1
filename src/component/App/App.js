@@ -1,6 +1,6 @@
 import postContainer from '../../container/postContainer'
 import Navigator from '../../container/navigatorContainer'
-import Footer from '../../component/Footer'
+import Footer from '../../container/footerContainer'
 import React,{Component} from 'react'
 import './App.css'
 

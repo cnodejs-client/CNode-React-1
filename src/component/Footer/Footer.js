@@ -6,18 +6,11 @@ import './Footer.less'
 class Footer extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            open: false
-        }
-        this.handleToggle = this.handleToggle.bind(this);
-    }
-
-    handleToggle() {
-        this.setState({open: !this.state.open})
-        console.log(this.state.open)
     }
 
     render() {
+        const {login} = this.props;
+        const {isLogin,data} = login;
         return (
             <MenuBar position="bottom">
                 <div className="Footer">
@@ -25,13 +18,19 @@ class Footer extends Component {
                         <Link to={"/#"}>首页</Link>
                     </span>
                     <span>
-                        <Link>发表</Link>
+                        <Link to={!isLogin ? '/login' : '/#' }>
+                            {"发表"}
+                        </Link>
                     </span>
                     <span>
-                        <Link>消息</Link>
+                        <Link to={!isLogin ? '/login' : '/#' }>
+                            {"消息"}
+                        </Link>
                     </span>
                     <span>
-                        <Link>我的</Link>
+                        <Link to={!isLogin ? '/login' : '/user/'+data.loginname }>
+                            {"我的"}
+                        </Link>
                     </span>
                 </div>
             </MenuBar>
