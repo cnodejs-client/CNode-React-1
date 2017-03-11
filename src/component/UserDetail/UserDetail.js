@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
+import {Link} from 'react-router'
 import {getRelativeTime} from '../../utils/dateUtil'
-import UserTopic from './UserTopic'
+import TabMenu from '../TabMenu'
 import ContentHeader from '../ContentHeader'
 import './UserDetail.less'
 
@@ -9,10 +10,26 @@ class UserDetail extends Component {
         super(props);
     }
 
-    componentDidMount(){
+    componentDidMount() {
         const {fetchUserData} = this.props;
         const {userName} = this.props.params;
         fetchUserData(userName);
+    }
+
+    _renderItem(tab) {
+        return tab.text;
+    }
+
+    _renderValue(item) {
+        return (
+            <div className="userTopicItem">
+                <Link to={`/topic/${item.id}`}>
+                    <div className="userTopicItem">
+                        {item.title}
+                    </div>
+                </Link>
+            </div>
+        )
     }
 
     render() {
@@ -24,11 +41,11 @@ class UserDetail extends Component {
                 </div>
             );
         }
-        const {avatar_url,loginname,score,create_at} = this.props.data;
+        const {avatar_url, loginname, score, create_at} = this.props.data;
         return (
             <div className="userDetail">
                 <ContentHeader
-                    title={loginname+'的个人中心'}
+                    title={loginname + '的个人中心'}
                 />
                 <div className="userAvatar">
                     <img className="avatar" src={avatar_url}/>
@@ -38,13 +55,25 @@ class UserDetail extends Component {
                         <span>注册于:{getRelativeTime(create_at)}</span>
                     </div>
                 </div>
-                <UserTopic
-                    data={this.props.data}
+                <TabMenu
+                    tabItem={tabItem}
+                    values={this.props.data}
+                    renderItem={this._renderItem}
+                    renderTab={this._renderValue}
+                    defaultTabValue={'recent_replies'}
                 />
             </div>
 
         );
     }
 }
+
+const tabItem = [{
+    value: 'recent_replies',
+    text: '最近回复'
+}, {
+    value: 'recent_topics',
+    text: '最近发布'
+}]
 
 export default UserDetail

@@ -1,0 +1,70 @@
+.TabMenu {
+  & > .menuItem {
+    display: flex;
+    width: 100%;
+    border-bottom: 1px solid #d5dbdb;
+    & span {
+      flex: 1;
+      height: 40px;
+      line-height: 40px;
+      text-align: center;
+      background: #eee;
+      border-bottom: 3px solid #eee;
+    }
+    & span:nth-child(n+1) {
+      border-left: 1px solid #d5dbdb;
+    }
+    & .active {
+      border-bottom: 3px solid #80bd01
+    }
+  }
+
+  & > .contentItem {
+    height: 50px;
+    line-height: 50px;
+    border-bottom: 1px solid #d5dbdb;
+  }
+
+}
+
+//.userTopic {
+//  & .userTopicTag {
+//    display: flex;
+//    width: 100%;
+//    border-bottom: 1px solid #d5dbdb;
+//    & span {
+//      flex: 1;
+//      height: 40px;
+//      line-height: 40px;
+//      text-align: center;
+//      background: #eee;
+//      border-bottom: 3px solid #eee;
+//    }
+//    & span:first-child {
+//      border-right: 1px solid #d5dbdb;
+//    }
+//    & .active {
+//      border-bottom: 3px solid #80bd01
+//    }
+//  }
+//
+//  & .userTopicContent {
+//
+//    & .userTopicItem {
+//      height: 50px;
+//      line-height: 50px;
+//      border-bottom: 1px solid #d5dbdb;
+//      overflow: hidden;
+//      white-space: nowrap;
+//      text-overflow: ellipsis;
+//      padding: 10px;
+//    }
+//
+//    & a {
+//      text-decoration: none;
+//      color: #000
+//    }
+//
+//  }
+//
+//}

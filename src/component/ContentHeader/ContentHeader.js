@@ -15,7 +15,6 @@ class ContentHeader extends Component {
                     <img
                         className="back"
                         src={require("../../../asset/image/back.png")}
-                        onClick={()=>{hashHistory.back()}}
                     />
                     <span>
                     {this.props.title}
