@@ -74,6 +74,9 @@ const tabItem = [{
 }, {
     value: 'recent_topics',
     text: '最近发布'
+},{
+    value: 'topic_collect',
+    text: '收藏'
 }]
 
 export default UserDetail
