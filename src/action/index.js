@@ -8,7 +8,8 @@ import {fetchLoginData,login_error,login_success,postAccessToken} from './LoginA
 import {POST_ACCESS_TOKEN,LOGIN_ERROR,LOGIN_SUCCESS} from './LoginAction'
 import {REQUEST_MESSAGE,RECEIVE_MESSAGE} from './MessageAction'
 import {requestMessage, receiveMessage, fetchMessageData }from './MessageAction'
-
+import {FAVORITE_TOPIC,UNFAVORITE_TOPIC} from './FavoriteAction'
+import {postFavoriteTopic,postUnFavoriteTopic} from './FavoriteAction'
 
 //Post
 export {SELECT_TAB, REQUEST_POSTS, RECEIVE_POSTS, INVALIDATE_TAB}
@@ -25,3 +26,6 @@ export {POST_ACCESS_TOKEN, LOGIN_SUCCESS, LOGIN_ERROR}
 //Message
 export {REQUEST_MESSAGE,RECEIVE_MESSAGE}
 export {requestMessage, receiveMessage, fetchMessageData}
+//Favorite
+export {FAVORITE_TOPIC,UNFAVORITE_TOPIC}
+export {postFavoriteTopic,postUnFavoriteTopic}

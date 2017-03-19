@@ -1,4 +1,5 @@
 import fetch from 'isomorphic-fetch'
+import {fetchUserData }from './UserAction'
 import {URL_PREFIX} from '../constant/Contant'
 const POST_ACCESS_TOKEN = 'POST_ACCESS_TOKEN'
 const LOGIN_SUCCESS = 'LOGIN_SUCCESS'
@@ -12,11 +13,12 @@ const postAccessToken = (accessToken) => {
 
 }
 
-const login_success = (json) => {
+const login_success = (json,collection) => {
     alert('登录成功')
     return {
         type: LOGIN_SUCCESS,
-        data: json
+        data: json,
+        topic_collect: collection.data.map(v=>v.id)
     };
 
 }
@@ -43,13 +45,17 @@ const fetchLoginData = (accessToken) => {
             .then((reponse) => reponse.json())
             .then((json) => {
                 if(json.success){
-                    dispatch(login_success(json))
+                    const {loginname} = json;
+                    const  collectionURL = URL_PREFIX+`/topic_collect/${loginname}`
+                    fetch(collectionURL)
+                        .then((reponse) => reponse.json())
+                        .then((collection)=>{
+                            dispatch(login_success(json,collection))
+                        })
                 }else {
-                    dispatch(login_error(json))
+                    dispatch(login_error(json.loginname))
                 }
-            }).catch(()=>{
-            dispatch(login_error(json))
-        })
+            })
     }
 }
 
