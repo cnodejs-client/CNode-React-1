@@ -2,9 +2,9 @@ import React, {Component, PropTypes} from 'react'
 import Avatar from '../Avatar'
 import {TABCONTANT} from '../../constant/Contant'
 import {getRelativeTime} from '../../utils/dateUtil'
-import './TopicItem.less'
+import './PostItem.less'
 
-export default class TopicItem extends Component {
+export default class PostItem extends Component {
 
     static PropTypes = {
         tab: PropTypes.string,
@@ -30,7 +30,7 @@ export default class TopicItem extends Component {
         } = this.props;
         const {onClick} = this.props;
         return (
-            <div className="topicItem">
+            <div className="postItem">
                 <h3 className={TABCONTANT[tab]}>{title}</h3>
                 <div className="content">
                     <Avatar

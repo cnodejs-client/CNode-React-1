@@ -1,7 +1,7 @@
 import React from 'react'
 import {Provider} from 'react-redux'
 import {Router,Route,hashHistory,IndexRoute} from 'react-router'
-import ReactDOM, {render} from 'react-dom'
+import {render} from 'react-dom'
 import App from './component/App'
 import loginContainer from './container/loginContainer'
 import PostContainer from './container/postContainer'

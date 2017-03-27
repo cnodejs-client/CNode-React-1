@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
-import TopicItem from '../TopicItem'
-import {Link, browserHistory} from 'react-router'
-import './PostList.css'
+import PostItem from './PostItem'
+import {Link} from 'react-router'
+import './PostList.less'
 
 export default class PostList extends Component {
 
@@ -13,8 +13,7 @@ export default class PostList extends Component {
     componentDidMount() {
         const {fetchData} =this.props;
         const tag = this.props.params.tag || 'all';
-        const url = `https://cnodejs.org/api/v1/topics?page=0&tab=${tag}&limit=20&mdrender=false`
-        fetchData(url, tag);
+        fetchData(tag,0);
         window.addEventListener("scroll", this._handleLoadMore);
     }
 
@@ -22,8 +21,7 @@ export default class PostList extends Component {
         if (nextProps.params.tag != this.props.params.tag) {
             const {fetchData} =nextProps;
             const tag = nextProps.params.tag || 'all';
-            const url = `https://cnodejs.org/api/v1/topics?page=0&tab=${tag}&limit=20&mdrender=false`
-            fetchData(url, tag);
+            fetchData(tag);
         }
     }
 
@@ -36,9 +34,8 @@ export default class PostList extends Component {
         if (document.documentElement.scrollHeight == document.documentElement.clientHeight + scrollTop) {
             const {fetchData, fetchedPageCount:page} =this.props;
             const tag = this.props.params.tag || 'all';
-            const url = `https://cnodejs.org/api/v1/topics?page=${page}&tab=${tag}&limit=20&mdrender=false`;
             if (page != 0) {
-                fetchData(url, tag);
+                fetchData(tag,page);
             }
         }
     }
@@ -54,14 +51,14 @@ export default class PostList extends Component {
 
         } else {
             return (
-                <div className="postlist">
+                <div className="postList">
                     {
                         data.map((item, index) => {
                             return (
                                 <Link to={"/topic/"+item.id}
-                                      key={index}
+                                      key={item.id}
                                 >
-                                    <TopicItem
+                                    <PostItem
                                         {...item}
                                     />
                                 </Link>

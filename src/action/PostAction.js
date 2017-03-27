@@ -1,11 +1,10 @@
 import fetch from 'isomorphic-fetch'
-import {TOPIC} from '../constant/Contant'
+import {TOPIC, URL_PREFIX} from '../constant/Contant'
 
 const SELECT_TAB = 'SELECT_TAB'
 const REQUEST_POSTS = 'REQUEST_POSTS'
 const RECEIVE_POSTS = 'RECEIVE_POSTS'
 const INVALIDATE_TAB = 'INVALIDATE_TAB'
-
 
 const selectTab = (tab) => {
     return {
@@ -21,14 +20,12 @@ const invalidateTab = (tab) => {
     }
 }
 
-
 const requestPosts = (tab) => {
     return {
         type: REQUEST_POSTS,
         tab
     }
 }
-
 
 const receivePosts = (tab, json) => {
     return {
@@ -39,10 +36,11 @@ const receivePosts = (tab, json) => {
     }
 }
 
-const fetchData = (url, tab = TOPIC.all) => {
+const fetchData = (tab = TOPIC.all, page = 0) => {
     return function (dispatch) {
         dispatch(selectTab(tab))
         dispatch(requestPosts(tab))
+        const url = URL_PREFIX + `/topics?page=${page}&tab=${tab}&limit=20&mdrender=false`
         fetch(url)
             .then((response) => response.json())
             .then((json) => {

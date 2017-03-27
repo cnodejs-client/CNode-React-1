@@ -7,7 +7,7 @@ var path = require('path');
 var config = {
     entry: path.resolve(__dirname, './src/app.js'),
     output: {
-        path: path.resolve(__dirname, './src/build'),
+        path: path.resolve(__dirname, './build'),
         filename: 'bundle.js'
     },
     resolve: {
@@ -24,8 +24,8 @@ var config = {
                 }
             },
             {
-                test: /\.css$/, // Only .css files
-                loader: 'style!css' // Run both loaders
+                test: /\.css$/,
+                loader: 'style!css'
             },
             {
                 test: /\.less$/,
