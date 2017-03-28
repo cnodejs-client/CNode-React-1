@@ -44,6 +44,7 @@
     "babel-preset-stage-0": "^6.16.0",
     "classnames": "^2.2.5",
     "css-loader": "^0.25.0",
+    "file-loader": "^0.10.1",
     "less": "^2.7.2",
     "less-loader": "^2.2.3",
     "react-addons-pure-render-mixin": "^15.4.2",

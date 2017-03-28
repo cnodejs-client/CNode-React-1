@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import {Link} from 'react-router'
 import {getRelativeTime} from '../../utils/dateUtil'
 import TabMenu from '../TabMenu'
+import Loading from '../Loading'
 import ContentHeader from '../ContentHeader'
 import './UserDetail.less'
 
@@ -37,7 +38,7 @@ class UserDetail extends Component {
         if (isFetching || !this.props.data) {
             return (
                 <div>
-                    Loading......
+                    <Loading F/>
                 </div>
             );
         }

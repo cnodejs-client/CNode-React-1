@@ -1,8 +1,12 @@
 import React, {Component} from 'react'
+import {decorate as mixin} from 'react-mixin'
+import PureRenderMixin from 'react-addons-pure-render-mixin'
+import Loading from '../Loading'
 import PostItem from './PostItem'
 import './PostList.less'
 
-export default class PostList extends Component {
+@mixin(PureRenderMixin)
+class PostList extends Component {
 
     constructor(props) {
         super(props);
@@ -40,21 +44,20 @@ export default class PostList extends Component {
     }
 
     render() {
-        let {data,directTopic} = this.props;
+        let {data, directTopic} = this.props;
         if (!data || data.length <= 0) {
-            return (
-                <div className="postList">
-                    Loading...
-                </div>
-            )
+            return <Loading />
 
         } else {
             return (
                 <div className="postList">
                     {
-                        data.map((item,index) => {
+                        data.map((item, index) => {
                             return (
-                                <div onClick={directTopic.bind(this,item.id)} key={index}>
+                                <div
+                                    onClick={directTopic.bind(this, item.id)}
+                                    key={index + item.id}
+                                >
                                     <PostItem
                                         {...item}
                                     />
@@ -67,3 +70,5 @@ export default class PostList extends Component {
         }
     }
 }
+
+export default PostList

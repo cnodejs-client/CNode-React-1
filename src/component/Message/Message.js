@@ -1,6 +1,7 @@
 import React, {Component, PropTypes} from 'react'
 import {hashHistory} from 'react-router'
 import TabMenu from '../TabMenu'
+import Loading from '../Loading'
 import ContentHeader from '../ContentHeader'
 import Comment from '../PostDetail/Comment'
 import './Message.less'
@@ -47,7 +48,7 @@ class Message extends Component {
                     {
                         isFetching || !data ?
                             <div>
-                                Loading...
+                                <Loading />
                             </div> :
                             <TabMenu
                                 tabItem={tabItem}

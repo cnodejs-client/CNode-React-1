@@ -24,7 +24,6 @@ const topic = (state = initialTopic, action) => {
     }
 }
 
-
 const topicByCnode = (state = {}, action)=>{
     switch (action.type) {
         case REQUEST_TOPIC:

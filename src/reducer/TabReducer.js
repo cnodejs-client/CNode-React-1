@@ -22,22 +22,20 @@ const selectTab = (state = "all", action) => {
 const posts = (state = initialPost, action) => {
     switch (action.type) {
         case REQUEST_POSTS:
-            return Object.assign({}, state, {
+            return {
+                ...state,
                 isFetching: true,
                 didInvalidate: false
-            });
+            };
         case RECEIVE_POSTS:
-            return Object.assign({}, state, {
+            return {
+                ...state,
                 isFetching: false,
-                didInvalidate: false,
-                data: [...state.data, ...action.posts],
+                didInvalidate: true,
+                data: [...state.data,...action.posts],
                 lastUpdated: action.receivedAt,
                 fetchedPageCount: state.fetchedPageCount + action.posts.length
-            });
-        case INVALIDATE_TAB:
-            return Object.assign({}, state, {
-                didInvalidate: true
-            })
+            };
         default:
             return state;
     }
@@ -56,4 +54,4 @@ const postsByCnode = (state = {}, action) => {
     }
 }
 
-export {selectTab, postsByCnode}
+export {selectTab, postsByCnode};

@@ -2,6 +2,7 @@ import React, {Component, PropTypes}from 'react'
 import {getRelativeTime} from '../../utils/dateUtil'
 import Comment from './Comment'
 import Avatar from '../Avatar'
+import Loading from '../Loading'
 import Favorite from '../Favorite'
 import ContentHeader from '../../component/ContentHeader'
 import {markdown} from 'markdown';
@@ -29,7 +30,7 @@ export default class PostDetail extends Component {
                     <ContentHeader
                         title={'详情'}
                     />
-                    Loading......
+                    <Loading />
                 </div>
             );
         }

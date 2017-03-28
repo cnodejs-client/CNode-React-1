@@ -33,8 +33,8 @@ var config = {
                 loader: 'style!css!less'
             },
             {
-                test: /\.(png|jpg)$/,
-                loader: 'url-loader?limit=8192&name=image/[hash:8].[name].[ext]'
+                test: /\.(png|jpg|gif)$/,
+                loader: 'url-loader?limit=1024&name=image/[hash:8].[name].[ext]'
             }
         ]
     }
