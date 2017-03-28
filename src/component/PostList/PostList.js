@@ -1,20 +1,19 @@
 import React, {Component} from 'react'
 import PostItem from './PostItem'
-import {Link} from 'react-router'
 import './PostList.less'
 
 export default class PostList extends Component {
 
     constructor(props) {
         super(props);
-        this._handleLoadMore = this._handleLoadMore.bind(this);
+        this._loadMoreHandler = this._loadMoreHandler.bind(this);
     }
 
     componentDidMount() {
         const {fetchData} =this.props;
         const tag = this.props.params.tag || 'all';
-        fetchData(tag,0);
-        window.addEventListener("scroll", this._handleLoadMore);
+        fetchData(tag, 0);
+        window.addEventListener("scroll", this._loadMoreHandler);
     }
 
     componentWillReceiveProps(nextProps) {
@@ -26,25 +25,25 @@ export default class PostList extends Component {
     }
 
     componentWillUnmount() {
-        window.removeEventListener('scroll', this._handleLoadMore)
+        window.removeEventListener('scroll', this._loadMoreHandler)
     }
 
-    _handleLoadMore() {
+    _loadMoreHandler() {
         var scrollTop = document.documentElement.scrollTop || window.pageYOffset || document.body.scrollTop;
         if (document.documentElement.scrollHeight == document.documentElement.clientHeight + scrollTop) {
             const {fetchData, fetchedPageCount:page} =this.props;
             const tag = this.props.params.tag || 'all';
             if (page != 0) {
-                fetchData(tag,page);
+                fetchData(tag, page);
             }
         }
     }
 
     render() {
-        let {data} = this.props;
+        let {data,directTopic} = this.props;
         if (!data || data.length <= 0) {
             return (
-                <div className="postlist">
+                <div className="postList">
                     Loading...
                 </div>
             )
@@ -53,15 +52,13 @@ export default class PostList extends Component {
             return (
                 <div className="postList">
                     {
-                        data.map((item, index) => {
+                        data.map((item,index) => {
                             return (
-                                <Link to={"/topic/"+item.id}
-                                      key={item.id}
-                                >
+                                <div onClick={directTopic.bind(this,item.id)} key={index}>
                                     <PostItem
                                         {...item}
                                     />
-                                </Link>
+                                </div>
                             );
                         })
                     }

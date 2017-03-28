@@ -14,6 +14,7 @@
 * React-Router
 * Redux
 * React-Redux
+* React-Router-Redux
 * LESS
 
 　　 暂未完成的功能有:

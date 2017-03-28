@@ -13,13 +13,6 @@ const selectTab = (tab) => {
     }
 }
 
-const invalidateTab = (tab) => {
-    return {
-        type: INVALIDATE_TAB,
-        tab
-    }
-}
-
 const requestPosts = (tab) => {
     return {
         type: REQUEST_POSTS,
@@ -50,4 +43,4 @@ const fetchData = (tab = TOPIC.all, page = 0) => {
 }
 
 export {SELECT_TAB, REQUEST_POSTS, RECEIVE_POSTS, INVALIDATE_TAB}
-export {selectTab, invalidateTab, receivePosts, requestPosts, fetchData};
+export {selectTab, receivePosts, requestPosts, fetchData};

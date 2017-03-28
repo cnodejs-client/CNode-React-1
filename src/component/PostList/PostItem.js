@@ -1,10 +1,13 @@
 import React, {Component, PropTypes} from 'react'
+import {decorate as mixin} from 'react-mixin'
+import PureRenderMixin from 'react-addons-pure-render-mixin';
 import Avatar from '../Avatar'
 import {TABCONTANT} from '../../constant/Contant'
 import {getRelativeTime} from '../../utils/dateUtil'
 import './PostItem.less'
 
-export default class PostItem extends Component {
+@mixin(PureRenderMixin)
+class PostItem extends Component {
 
     static PropTypes = {
         tab: PropTypes.string,
@@ -31,7 +34,7 @@ export default class PostItem extends Component {
         const {onClick} = this.props;
         return (
             <div className="postItem">
-                <h3 className={TABCONTANT[tab]}>{title}</h3>
+                <h3>{title}</h3>
                 <div className="content">
                     <Avatar
                         className = "avatar"
@@ -53,3 +56,5 @@ export default class PostItem extends Component {
         );
     }
 }
+
+export default PostItem
