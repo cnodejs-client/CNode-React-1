@@ -1,37 +1,45 @@
-.comment{
+.comment {
   border-bottom: 1px solid #d5dbdb;
   margin-top: 10px;
-  .profile{
+  .profile {
     display: flex;
-    .comment-author{
+    .comment-author {
       flex-basis: 45px;
       margin-right: 10px;
       width: 45px;
       height: 45px;
     }
-    .message{
+    .message {
       flex-grow: 1;
-      span{
+      span {
         display: block;
-        &:first-child{
+        &:first-child {
           height: 20px;
         }
-        &:last-child{
+        &:last-child {
           height: 25px;
         }
       }
 
+    }
+    .operator {
+      flex-basis: 60px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      & .comments {
+        width: 18px;
+        height: 18px;
+      }
 
     }
-    .operator{
-      flex-basis: 60px;
-    }
   }
-  .comment-content{
+  .comment-content {
     display: flex;
     margin: 0px 20px;
     line-height: 1.3;
-    & > .markdown-body{
+    & > .markdown-body {
       flex: 1;
       overflow-x: hidden;
       padding: 10px;

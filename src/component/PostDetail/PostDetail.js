@@ -84,6 +84,8 @@ class PostDetail extends Component {
                     replies.map((reply, index) => (
                         <Comment
                             key={reply.id}
+                            directToLogin={directToLogin}
+                            login={this.props.login}
                             {...reply}
                         />
                     ))

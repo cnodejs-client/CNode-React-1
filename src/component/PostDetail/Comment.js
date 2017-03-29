@@ -4,6 +4,7 @@ import {markdown} from 'markdown'
 import {decorate as mixin} from 'react-mixin'
 import PureRenderMixin from 'react-addons-pure-render-mixin'
 import Avatar from '../Avatar'
+import Good from './Good'
 import 'github-markdown-css'
 import './Comment.less'
 
@@ -14,7 +15,7 @@ class Comment extends Component {
     }
 
     render() {
-        const {content, author, create_at} = this.props;
+        const {content, author, create_at,ups,login,id} = this.props;
         return (
             <div className="comment">
                 <div className="profile">
@@ -28,6 +29,14 @@ class Comment extends Component {
                         <span className="time">发布于:{getRelativeTime(create_at)}</span>
                     </div>
                     <div className="operator">
+                        <img className="comments" src={require('../../../asset/image/comments.png')}/>
+                        <Good
+                            commentId = {id}
+                            directToLogin={this.props.directToLogin}
+                            good={ups.includes(login.data.id)}
+                            isLogin={login.isLogin}
+                            accessToken = {login.accessToken}
+                        />
                     </div>
                 </div>
                 <div className="comment-content">
