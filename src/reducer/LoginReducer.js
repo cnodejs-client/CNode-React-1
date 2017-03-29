@@ -29,11 +29,13 @@ const login = (state = initialLogin, action) => {
             return {
                 ...initialLogin
             }
+        //在用户信息中增加已经收藏的帖子
         case FAVORITE_TOPIC:
             return {
                 ...state,
                 topic_collect: [...state.topic_collect,action.topicId]
             }
+        //在用户信息中删除收藏的帖子
         case UNFAVORITE_TOPIC:
             return {
                 ...state,

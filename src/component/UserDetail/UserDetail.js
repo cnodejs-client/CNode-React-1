@@ -38,7 +38,7 @@ class UserDetail extends Component {
         if (isFetching || !this.props.data) {
             return (
                 <div>
-                    <Loading F/>
+                    <Loading />
                 </div>
             );
         }

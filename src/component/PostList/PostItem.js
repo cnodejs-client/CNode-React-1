@@ -1,6 +1,6 @@
 import React, {Component, PropTypes} from 'react'
 import {decorate as mixin} from 'react-mixin'
-import PureRenderMixin from 'react-addons-pure-render-mixin';
+import PureRenderMixin from 'react-addons-pure-render-mixin'
 import Avatar from '../Avatar'
 import {TABCONTANT} from '../../constant/Contant'
 import {getRelativeTime} from '../../utils/dateUtil'

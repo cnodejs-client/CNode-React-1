@@ -1,11 +1,14 @@
 import React, {Component} from 'react'
 import {getRelativeTime} from '../../utils/dateUtil'
 import {markdown} from 'markdown'
+import {decorate as mixin} from 'react-mixin'
+import PureRenderMixin from 'react-addons-pure-render-mixin'
 import Avatar from '../Avatar'
 import 'github-markdown-css'
 import './Comment.less'
 
-export default class Comment extends Component {
+@mixin(PureRenderMixin)
+class Comment extends Component {
     constructor(props) {
         super(props)
     }
@@ -41,3 +44,5 @@ export default class Comment extends Component {
         );
     }
 }
+
+export default Comment

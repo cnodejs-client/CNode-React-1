@@ -3,17 +3,19 @@ import {getRelativeTime} from '../../utils/dateUtil'
 import Comment from './Comment'
 import Avatar from '../Avatar'
 import Loading from '../Loading'
-import Favorite from '../Favorite'
+import Favorite from './Favorite'
+import {decorate as mixin} from 'react-mixin'
+import PureRenderMixin from 'react-addons-pure-render-mixin'
 import ContentHeader from '../../component/ContentHeader'
 import {markdown} from 'markdown';
 import 'github-markdown-css'
 import './PostDetail.less'
 
-export default class PostDetail extends Component {
+@mixin(PureRenderMixin)
+class PostDetail extends Component {
 
     constructor(props) {
         super(props)
-        console.log(props)
     }
 
     componentDidMount() {
@@ -36,10 +38,10 @@ export default class PostDetail extends Component {
         }
 
         const {
-            id, title, author, create_at, visit_count, good, top, tab,
+            id, title, author, create_at, visit_count,
             content, replies
         } = this.props.data;
-        const {postFavoriteTopic,postUnFavoriteTopic} = this.props;
+        const {postFavoriteTopic,postUnFavoriteTopic,directToLogin} = this.props;
         const {accessToken} = this.props.login;
         const userCollection = this.props.login.topic_collect;
 
@@ -64,6 +66,7 @@ export default class PostDetail extends Component {
                             isFavorite={userCollection.includes(id)}
                             fav={postFavoriteTopic}
                             unFav={postUnFavoriteTopic}
+                            directToLogin={directToLogin}
                         />
                         <span>{visit_count}次阅读</span>
                     </div>
@@ -80,7 +83,7 @@ export default class PostDetail extends Component {
                 {
                     replies.map((reply, index) => (
                         <Comment
-                            key={index}
+                            key={reply.id}
                             {...reply}
                         />
                     ))
@@ -89,3 +92,5 @@ export default class PostDetail extends Component {
         );
     }
 }
+
+export default PostDetail

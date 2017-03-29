@@ -1,7 +1,11 @@
 import React, {Component, PropTypes} from 'react'
+import {decorate as mixin} from 'react-mixin'
+import PureRenderMixin from 'react-addons-pure-render-mixin'
 import {hashHistory} from 'react-router'
 import classnames from 'classnames'
 import './Favorite.less'
+
+@mixin(PureRenderMixin)
 class Favorite extends Component {
 
     constructor(props) {
@@ -28,7 +32,7 @@ class Favorite extends Component {
         const {accessToken, unFav, fav, topicId} = this.props;
         const {isFavorite} = this.state;
         if (accessToken === '') {
-            this.redirectLoginPage();
+            this.props.directToLogin();
         }
         if (isFavorite) {
             unFav(topicId, accessToken)
@@ -43,10 +47,6 @@ class Favorite extends Component {
             })
         }
 
-    }
-
-    redirectLoginPage() {
-        hashHistory.push('/login');
     }
 
     render() {

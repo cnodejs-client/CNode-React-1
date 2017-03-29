@@ -1,11 +1,11 @@
 import PostDetail from '../component/PostDetail'
 import {connect} from 'react-redux'
+import {push} from 'react-router-redux'
 import {fetchTopicData,postFavoriteTopic,postUnFavoriteTopic} from '../action'
 
 
 const mapStateToProps = (state,ownProps)=>{
     const topicId = ownProps.params.topicId;
-    const loginname = state.login.data.loginname
     return {
         isFetching: state.topicByCnode[topicId] && state.topicByCnode[topicId].isFetching,
         data: state.topicByCnode[topicId] && state.topicByCnode[topicId].data,
@@ -17,6 +17,9 @@ const mapDispatchToProps = (dispatch)=>{
     return {
         fetchTopicData: (topicId)=>{
             dispatch(fetchTopicData(topicId))
+        },
+        directToLogin: ()=>{
+            dispatch(push('/login'))
         },
         postFavoriteTopic: (topicId,accessToken)=>{
             dispatch(postFavoriteTopic(topicId,accessToken))
