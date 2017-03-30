@@ -18,6 +18,18 @@ class PostDetail extends Component {
         super(props)
     }
 
+    static propTypes = {}
+
+    static childContextTypes = {
+        directToLogin: PropTypes.func
+    }
+
+    getChildContext() {
+        return {
+            directToLogin: this.props.directToLogin
+        };
+    }
+
     componentDidMount() {
         const {fetchTopicData} = this.props;
         const {topicId} = this.props.params;
@@ -41,7 +53,7 @@ class PostDetail extends Component {
             id, title, author, create_at, visit_count,
             content, replies
         } = this.props.data;
-        const {postFavoriteTopic,postUnFavoriteTopic,directToLogin} = this.props;
+        const {postFavoriteTopic,postUnFavoriteTopic} = this.props;
         const {accessToken} = this.props.login;
         const userCollection = this.props.login.topic_collect;
 
@@ -66,7 +78,6 @@ class PostDetail extends Component {
                             isFavorite={userCollection.includes(id)}
                             fav={postFavoriteTopic}
                             unFav={postUnFavoriteTopic}
-                            directToLogin={directToLogin}
                         />
                         <span>{visit_count}次阅读</span>
                     </div>
@@ -84,7 +95,6 @@ class PostDetail extends Component {
                     replies.map((reply, index) => (
                         <Comment
                             key={reply.id}
-                            directToLogin={directToLogin}
                             login={this.props.login}
                             {...reply}
                         />

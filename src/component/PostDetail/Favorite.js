@@ -28,11 +28,15 @@ class Favorite extends Component {
         isFavorite: false
     }
 
+    static contextTypes = {
+        directToLogin: PropTypes.func
+    }
+
     onClickHandler() {
         const {accessToken, unFav, fav, topicId} = this.props;
         const {isFavorite} = this.state;
         if (accessToken === '') {
-            this.props.directToLogin();
+            this.context.directToLogin();
         }
         if (isFavorite) {
             unFav(topicId, accessToken)

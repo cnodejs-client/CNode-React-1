@@ -20,6 +20,10 @@ class Good extends Component {
         isLogin: false
     }
 
+    static contextTypes = {
+        directToLogin: PropTypes.func
+    }
+
     constructor(props) {
         super(props);
         this.state = {
@@ -41,7 +45,7 @@ class Good extends Component {
     _onClickHandler(){
         const {commentId,accessToken} = this.props;
         if(!this.props.isLogin){
-            this.props.directToLogin();
+            this.context.directToLogin();
         }else{
             const url = URL_PREFIX + `/reply/${commentId}/ups`
             fetch(url, {

@@ -5,6 +5,7 @@ import {decorate as mixin} from 'react-mixin'
 import PureRenderMixin from 'react-addons-pure-render-mixin'
 import Avatar from '../Avatar'
 import Good from './Good'
+import CommentInput from '../CommentInput'
 import 'github-markdown-css'
 import './Comment.less'
 
@@ -12,6 +13,10 @@ import './Comment.less'
 class Comment extends Component {
     constructor(props) {
         super(props)
+        this.state = {
+            showInput: false
+        }
+        this._onCommentImageClickHandler = this._onCommentImageClickHandler.bind(this)
     }
 
     render() {
@@ -29,7 +34,11 @@ class Comment extends Component {
                         <span className="time">发布于:{getRelativeTime(create_at)}</span>
                     </div>
                     <div className="operator">
-                        <img className="comments" src={require('../../../asset/image/comments.png')}/>
+                        <img
+                            className="comments"
+                            src={require('../../../asset/image/comments.png')}
+                            onClick={this._onCommentImageClickHandler}
+                        />
                         <Good
                             commentId = {id}
                             directToLogin={this.props.directToLogin}
@@ -49,9 +58,24 @@ class Comment extends Component {
                     >
                     </div>
                 </div>
+                {
+                    !this.state.showInput ? null:
+                        <CommentInput />
+                }
             </div>
         );
     }
+
+    _onCommentImageClickHandler(){
+        // if(!this.props.login.isLogin){
+        //     this.context.directToLogin();
+        // }else{
+            this.setState({
+                showInput: !this.state.showInput
+            });
+        // }
+    }
+
 }
 
 export default Comment

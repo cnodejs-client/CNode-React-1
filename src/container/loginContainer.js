@@ -1,5 +1,6 @@
 import {connect} from 'react-redux'
 import Login from '../component/Login'
+import {goBack} from 'react-router-redux'
 import {fetchLoginData} from '../action/LoginAction'
 
 const mapStateToProps = (state,ownProps)=>{
