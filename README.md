@@ -30,3 +30,17 @@
 * ~~消息查看~~
 * ~~收藏帖子和取消收藏帖子~~
 * ~~查看用户收藏的帖子~~
+
+程序演示
+![gif1][1]
+![gif2][2]
+![png1][3]
+![png2][4]
+![png3][5]
+
+
+[1]: https://github.com/MrErHu/CNode-React/blob/master/doc/image/1.gif
+[2]: https://github.com/MrErHu/CNode-React/blob/master/doc/image/2.gif
+[3]: https://github.com/MrErHu/CNode-React/blob/master/doc/image/1.png
+[4]: https://github.com/MrErHu/CNode-React/blob/master/doc/image/2.png
+[5]: https://github.com/MrErHu/CNode-React/blob/master/doc/image/3.png
