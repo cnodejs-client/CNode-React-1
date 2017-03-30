@@ -1,4 +1,5 @@
-import React, {Component} from 'react'
+import React, {Component,PropTypes} from 'react'
+import fetch from 'isomorphic-fetch'
 import {getRelativeTime} from '../../utils/dateUtil'
 import {markdown} from 'markdown'
 import {decorate as mixin} from 'react-mixin'
@@ -9,6 +10,8 @@ import CommentInput from '../CommentInput'
 import 'github-markdown-css'
 import './Comment.less'
 
+import {URL_PREFIX}from '../../constant/Contant'
+
 @mixin(PureRenderMixin)
 class Comment extends Component {
     constructor(props) {
@@ -17,6 +20,11 @@ class Comment extends Component {
             showInput: false
         }
         this._onCommentImageClickHandler = this._onCommentImageClickHandler.bind(this)
+        this._onCommentInputClickHandler = this._onCommentInputClickHandler.bind(this);
+    }
+
+    static contextTypes ={
+        directToLogin: PropTypes.func
     }
 
     render() {
@@ -60,22 +68,46 @@ class Comment extends Component {
                 </div>
                 {
                     !this.state.showInput ? null:
-                        <CommentInput />
+                        <CommentInput
+                            submit={this._onCommentInputClickHandler}
+                        />
                 }
             </div>
         );
     }
 
-    _onCommentImageClickHandler(){
-        // if(!this.props.login.isLogin){
-        //     this.context.directToLogin();
-        // }else{
+    _onCommentImageClickHandler(event){
+        if(!this.props.login.isLogin){
+            this.context.directToLogin();
+        }else{
             this.setState({
                 showInput: !this.state.showInput
             });
-        // }
+        }
     }
 
+    _onCommentInputClickHandler(text){
+        const {login,topicId,id} = this.props;
+        const url = URL_PREFIX + `/topic/${topicId}/replies`
+        fetch(url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                accesstoken: login.accessToken,
+                content: text,
+                reply_id: id
+            })
+        }).then(response=>response.json())
+            .then((json)=>{
+                if(json.success){
+                    this.setState({
+                        showInput: !this.state.showInput
+                    })
+                }
+            });
+    }
 }
 
 export default Comment

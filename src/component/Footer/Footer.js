@@ -18,11 +18,6 @@ class Footer extends Component {
                         <Link to={"/#"}>首页</Link>
                     </span>
                     <span>
-                        <Link to={!isLogin ? '/login' : '/#' }>
-                            {"发表"}
-                        </Link>
-                    </span>
-                    <span>
                         <Link to={!isLogin ? '/login' : '/message' }>
                             {"消息"}
                         </Link>

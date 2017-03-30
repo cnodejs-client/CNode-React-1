@@ -38,10 +38,19 @@
   .postContent{
     display: flex;
     margin: 0px 20px;
+    flex-direction: column;
+    border-bottom: 1px solid #d5dbdb;
     & > .markdown-body{
       flex: 1;
       overflow-x: hidden;
       padding: 10px;
+    }
+
+    & .commentIcon{
+      align-self: flex-end;
+      height: 18px;
+      width: 18px;
+      margin-bottom: 5px;
     }
   }
 

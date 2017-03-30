@@ -7,15 +7,23 @@ import Favorite from './Favorite'
 import {decorate as mixin} from 'react-mixin'
 import PureRenderMixin from 'react-addons-pure-render-mixin'
 import ContentHeader from '../../component/ContentHeader'
+import CommentInput from '../CommentInput'
 import {markdown} from 'markdown';
 import 'github-markdown-css'
 import './PostDetail.less'
+
+import {URL_PREFIX}from '../../constant/Contant'
 
 @mixin(PureRenderMixin)
 class PostDetail extends Component {
 
     constructor(props) {
-        super(props)
+        super(props);
+        this.state = {
+            showInput: false
+        };
+        this._onCommentImageClickHandler = this._onCommentImageClickHandler.bind(this);
+        this._onCommentInputClickHandler = this._onCommentInputClickHandler.bind(this);
     }
 
     static propTypes = {}
@@ -90,10 +98,22 @@ class PostDetail extends Component {
                              }
                          }>
                     </div>
+                    <img
+                        className="commentIcon"
+                        src={require('../../../asset/image/comments.png')}
+                        onClick={this._onCommentImageClickHandler}
+                    />
+                    {
+                        !this.state.showInput ? null:
+                            <CommentInput
+                                submit={this._onCommentInputClickHandler}
+                            />
+                    }
                 </div>
                 {
                     replies.map((reply, index) => (
                         <Comment
+                            topicId = {id}
                             key={reply.id}
                             login={this.props.login}
                             {...reply}
@@ -102,6 +122,39 @@ class PostDetail extends Component {
                 }
             </div>
         );
+    }
+
+
+    _onCommentImageClickHandler(event){
+        if(!this.props.login.isLogin){
+            this.props.directToLogin();
+        }else{
+            this.setState({
+                showInput: !this.state.showInput
+            });
+        }
+    }
+
+    _onCommentInputClickHandler(text){
+        const {login} = this.props;
+        const url = URL_PREFIX + `/topic/${this.props.data.id}/replies`
+        fetch(url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                accesstoken: login.accessToken,
+                content: text
+            })
+        }).then(response=>response.json())
+            .then((json)=>{
+                if(json.success){
+                    this.setState({
+                        showInput: !this.state.showInput
+                    })
+                }
+            });
     }
 }
 
